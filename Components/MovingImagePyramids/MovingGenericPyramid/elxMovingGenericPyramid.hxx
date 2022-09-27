@@ -84,6 +84,15 @@ MovingGenericPyramid<TElastix>::SetMovingSchedule()
   {
     /** Set the rescale schedule into this class. */
     this->SetRescaleSchedule(rescaleSchedule);
+
+    const auto newSchedule = this->GetRescaleSchedule();
+
+    if (newSchedule != rescaleSchedule)
+    {
+      xl::xout["warning"] << "WARNING: the moving pyramid rescale schedule is adjusted!\n"
+                             "Input schedule from configuration: "
+                          << rescaleSchedule << "\nAdjusted schedule: " << newSchedule << std::endl;
+    }
   }
 
   /** Set the schedule for smoothing (sigmas).
@@ -118,6 +127,15 @@ MovingGenericPyramid<TElastix>::SetMovingSchedule()
   {
     /** Set the rescale schedule into this class. */
     this->SetSmoothingSchedule(smoothingSchedule);
+
+    const auto newSchedule = this->GetSmoothingSchedule();
+
+    if (newSchedule != smoothingSchedule)
+    {
+      xl::xout["warning"] << "WARNING: the moving pyramid smoothing schedule is adjusted!\n"
+                             "Input schedule from configuration: "
+                          << smoothingSchedule << "\nAdjusted schedule: " << newSchedule << std::endl;
+    }
   }
 
   // this->m_Configuration->CountNumberOfParameterEntries( "ImagePyramidRescaleSchedule" );
